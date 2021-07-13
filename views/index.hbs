@@ -1,0 +1,119 @@
+<div class="row justify-content-around">
+  <div class="col-4">
+    <div class="mainImg" id="mainImg">
+      <img src="/image-bags/Model3-Beige.JPG" id="delImg" alt="Model3" class="Model3"/>
+      <div class="forUploading" id="forUploading">
+        {{#if image}}
+        <div class="wrapper-img-domnload">
+          <img class="image-download" src="downloadImg/{{image}}" alt="" class="img-download">
+        </div>
+        {{/if}}
+        <div id="container">
+
+        </div>
+      </div>
+    </div>
+    <div class="total">
+      <h2>Стоимость:&nbsp</h2>
+      <div class="totalPrice">
+
+      </div>
+    </div>
+     <a class="glow-button" href="/order">оформить заказ</a> {{!-- btn btn-warning --}}
+  </div>
+
+  <div id="constructorPart" class="col-5">
+    <h2>Конструктор</h2>
+    <div class="title">Выберите модель</div>
+    <div class="wrapper-images">
+      <div id="Model1" class="image">
+        <img src="/image-bags/Model1_Beige.JPG" alt="Model1" class="Model1"/>
+      </div>
+      <div id="Model2" class="image">
+        <img src="/image-bags/Model2-Beige.JPG" alt="Model2" class="Model2"/>
+      </div>
+      <div id="Model3" class="image">
+        <img src="/image-bags/Model3-Beige.JPG" alt="Model3" class="Model3"/>
+      </div>
+    </div>
+    <div class="title">
+      Выберите цвет <select name="selectColor" id="selectColor">
+      {{#each uniqueColors}}
+      <option value="{{this}}">{{this}}</option>
+      {{/each}}
+      {{! <option value="White">White</option>
+      <option value="Black">Black</option>
+      <option value="Red">Red</option> }}
+    </select>
+      </div>
+    
+    <div class="title">
+      Выберите размер <select name="selectSize" id="selectSize">
+      {{#each uniqueSizes}}
+      <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+      </div>
+    
+    <div class="title">Выберите материал</div>
+    <form name='materials' method="POST" class="materials" action="">
+      {{#each materialsFromDB}}
+      <label for={{this.name}}>
+        <div class="aboutMaterial">
+          <b>{{this.name}}</b>
+          <span>{{this.description}}</span>
+          <div class="wrapper-choice-fabric">
+            <img class="imgMaterial" src="{{this.image}}" alt="{{this.name}}" />
+            <input class="choice-fabric-radio" name="material" id={{this.name}} type="radio" />
+          </div>
+        </div>
+      </label>
+
+      {{/each}}
+    </form>
+    <div class="block-dowmload-img" id="containerAddConva">
+      <div class="wrapper-form">
+        <h2 class="title-upload">Добавить картинку</h2>
+        <form method="POST" name="downloadImg" class="form-params-upload" enctype="multipart/form-data">
+          <label for="file-upload" class="sliding-button">
+            выберите файл
+          </label>
+           <input id="file-upload" data type="file" name="image" class="hiden"> {{!-- form-input-params --}}
+           <label for="add-file" class="sliding-button">
+            добавить
+          </label>
+          <input id="add-file" type="submit" value="добавить изображение" class="form-input-params hiden">
+        </form>
+        {{!-- <h2 class="title-upload">Добавить текст</h2> --}}
+        <div class="addText">
+        <input id="addTxt" type="text" placeholder="введите текст" class="form-input-params">
+        <label for="addText" class="sliding-button">
+            добавить текст
+          </label>
+        <input id="addText" type="button" value="добавить текст" class="form-input-params addText hiden">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+{{!-- <div class="col-4 block-dowmload-img" id="containerAddConva">
+      <input id="addTxt" type="text">
+      <button class="addText" id="addText" type="button">Добавить текст</button>
+    <div class="wrapper-form">
+        <h2 class="title-upload">Загрузка изображения</h2>
+        
+        <form method="POST" class="form-params-upload" enctype="multipart/form-data" name="downloadImg">
+            <input data type="file" name="image" class="form-input-params">
+            <input type="submit" value="download img" class="form-input-params">
+        </form>
+        <a class="btn btn-warning" href="/order">оформить заказ</a>
+      </div>
+    </div> --}}
